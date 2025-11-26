@@ -1,18 +1,33 @@
 <script>
     import { setContext } from 'svelte';
+    import { writable } from 'svelte/store';
 	let { children } = $props();
 
-    let size = $state(1);
+    let size = writable(1);
 
     setContext("size", size)
     
-    let chargeWitdh = $derived(size * 88);
 </script>
+
+<svelte:head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+		body {
+			margin: 0;
+			font-family: "Roboto", sans-serif;
+			font-optical-sizing: auto;
+			font-weight: <weight>;
+			font-style: normal;
+			font-variation-settings:
+			"wdth" 100;
+		}
+    </style>
+</svelte:head>
 
 {@render children()}
 <div class="barEdi">
     <div class="charge"> 
-        <div class="content" style="width: {(chargeWitdh).toFixed(2)}%;">
+        <div class="content" style="width: {($size*88).toFixed(2)}%;">
             <span class="edi">
                 EDI
             </span>
@@ -55,4 +70,5 @@
         justify-content: center;
         align-items: center;
     }
+    
 </style>

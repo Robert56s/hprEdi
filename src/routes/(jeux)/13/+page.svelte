@@ -1,20 +1,16 @@
-<script>
-    import { getContext, onMount } from 'svelte';
-    let size = getContext('size')
-
-    onMount(()=>{
-        $size -= 0.1;
-    })
-</script>
-
 <div class="page">
-    <img src="/page8-1.png" alt="" class="car">
+    <img src="/page13.png" alt="" class="car">
     <div class="text">
-        Ayayayyy. Trop peu de diversité : les idées échangées seront semblables, <br> ce qui va créer un effet de bulle et isoler les détectives de la réalité.
+        Jean-Michel n’a encore rien trouvé et se sent inutile.
     </div>
-    <a href="/7" class="continuer">
-        Retourner
-    </a>
+    <div class="container">
+        <a href="/14-1" class="continuer">
+                Exclure Jean-Michel
+        </a>
+        <a href="/14-2" class="continuer">
+                Lui rappeler son importance
+        </a>
+    </div>
 </div>
 
 <style>
@@ -53,11 +49,15 @@
     }
 
     .text {
-        font-size: 1.5em;
+        font-size: 2em;
         color: #000000;
         background-color: rgb(247, 180, 255);
         border-radius: 0.4em;
         padding: 0.5em;
         margin-top: 1em;
+    }
+    .container {
+        display: flex;
+        gap: 1em;
     }
 </style>

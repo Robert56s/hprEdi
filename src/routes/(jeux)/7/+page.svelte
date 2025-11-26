@@ -4,10 +4,10 @@
         Quelle équipe devrait choisir Léa ?
     </div>
     <div class="container">
-        <a href="/8-1" class="continuer">
+        <a href="/8-2" class="continuer">
                 Continuer avec l'équipe 1
         </a>
-        <a href="/8-2" class="continuer">
+        <a href="/8-1" class="continuer">
                 Continuer avec l'équipe 2
         </a>
     </div>

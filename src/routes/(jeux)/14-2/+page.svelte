@@ -1,19 +1,10 @@
-<script>
-    import { getContext, onMount } from 'svelte';
-    let size = getContext('size')
-
-    onMount(()=>{
-        $size -= 0.1;
-    })
-</script>
-
 <div class="page">
-    <img src="/page8-1.png" alt="" class="car">
+    <img src="/page14-2.png" alt="" class="car">
     <div class="text">
-        Ayayayyy. Trop peu de diversité : les idées échangées seront semblables, <br> ce qui va créer un effet de bulle et isoler les détectives de la réalité.
+        Bonne réponse : reconnaître les forces de chacun renforce <br> l’esprit d’équipe et améliore le travail collectif.
     </div>
-    <a href="/7" class="continuer">
-        Retourner
+    <a href="/15" class="continuer">
+        Continuer
     </a>
 </div>
 

@@ -1,8 +1,5 @@
 <div class="page">
     <img src="/page6.jpg" alt="" class="car">
-    <div class="text">
-        Intéressant !
-    </div>
     <a href="/7" class="continuer">
             Continuer
     </a>

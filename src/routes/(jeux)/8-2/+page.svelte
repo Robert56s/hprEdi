@@ -2,7 +2,7 @@
     <img src="/page8-2.png" alt="" class="car">
     <div class="text">
         Bonne réponse : Une équipe diversifiée apporte plus de points de vue,<br> d’expertises et d’idées.
-        ela améliore la qualité de l’enquête.
+        Elle améliore la qualité de l’enquête.
     </div>
     <a href="/9" class="continuer">
         Continuer

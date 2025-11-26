@@ -1,3 +1,15 @@
+<script>
+    import { getContext, onMount } from 'svelte';
+
+    let size = getContext('size')
+
+    onMount(()=>{
+        $size -= 0.1;
+        if ($size < 0) $size = 0;
+    })
+
+</script>
+
 <div class="page">
     <img src="/page5-1.png" alt="" class="car">
     <div class="text">
