@@ -1,7 +1,7 @@
 <div class="page">
     <img src="/car2.png" alt="" class="car">
     <div class="text">
-        Que devrais faire Léa ?
+        Que devrait faire Léa ?
     </div>
     <a href="/4" class="continuer">
             Continuer

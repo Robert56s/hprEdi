@@ -1,10 +1,10 @@
 <div class="page">
     <div class="section">
         <a class="sel" href="/5-1">
-            1. Aller interoger les pieuvres, ce sont surment elles les coupables
+            1. Aller interroger les pieuvres, elles sont sûrement coupables
         </a>
         <a class="sel" href="/5-2">
-            2. Continuer a interroger les huitres
+            2. Continuer d'interroger les huîtres
         </a>
     </div>
     <img src="/a3.png" alt="" class="car">

@@ -1,14 +1,14 @@
 <div class="page">
     <img src="/page13.png" alt="" class="car">
     <div class="text">
-        Jean-Michel n’a encore rien trouvé et se sent inutile.
+        Jean-Michel n'a toujours rien trouvé et se sent inutile.
     </div>
     <div class="container">
         <a href="/14-1" class="continuer">
-                Exclure Jean-Michel
+            L'exclure
         </a>
         <a href="/14-2" class="continuer">
-                Lui rappeler son importance
+            Rappeler à Jean-Michel qu'il est important
         </a>
     </div>
 </div>
