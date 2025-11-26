@@ -1,5 +1,5 @@
 <div class="page">
-    <img src="/page5-2.jpg" alt="" class="car">
+    <img src="/page4.jpg" alt="" class="car">
     <div class="text">
         Bonne réponse ! Léa recueille plus d’informations avant de cibler un suspect.
         <br>Une bonne enquête commence par les faits, pas par les suppositions.

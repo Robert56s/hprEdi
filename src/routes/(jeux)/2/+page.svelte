@@ -1,6 +1,9 @@
 <div class="page">
     <img src="/car2.png" alt="" class="car">
-    <a href="/3" class="continuer">
+    <div class="text">
+        Que devrais faire Léa ?
+    </div>
+    <a href="/4" class="continuer">
             Continuer
     </a>
 </div>
@@ -38,5 +41,13 @@
     }
     .continuer:active {
         transform: scale(0.95);
+    }
+    .text {
+        font-size: 2em;
+        color: #000000;
+        background-color: rgb(247, 180, 255);
+        border-radius: 0.4em;
+        padding: 0.5em;
+        margin-top: 1em;
     }
 </style>

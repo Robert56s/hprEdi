@@ -8,7 +8,7 @@
 </script>
 
 <div class="page">
-    <img src="/page8-1.png" alt="" class="car">
+    <img src="/page5-2.jpg" alt="" class="car">
     <div class="text">
         Ayayayyy. Trop peu de diversité : les idées échangées seront semblables, <br> ce qui va créer un effet de bulle et isoler les détectives de la réalité.
     </div>
