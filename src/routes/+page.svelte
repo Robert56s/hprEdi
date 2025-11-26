@@ -1,331 +1,231 @@
-<script>
-    import {Howl, Howler} from 'howler';
-
-    let meow = new Howl({
-        src: ['meow2.mp3'],
-        volume: 0.5,
-        html5: true,
-    });
-    let angryMeow = new Howl({
-        src: ['angry-meow.mp3'],
-        volume: 0.5,
-        html5: true,
-    });
-    
-
-
-    let questions = $state([])
-	questions = [
-        {
-            question: "Quelle est le meilleurs brainrot italien",
-            choixDeReponse: [
-                "(a) tralalelo tralala",
-                "(b) bombardilo crocodilo",
-                "(c) tripitropa",
-                "(d) tung tung tung tung tung tung tung tung tung tung sahur",
-            ],
-            indexBonneReponse: 1,
-            corriger: "la bonne reponse etait (b)"
-        },
-        {
-            question: "Quelle est le lgbt.... le plus a jours",
-            choixDeReponse: [
-                "(a) lgbtq",
-                "(b) lgbtqia+",
-                "(c) lgbtqrstuv",
-                "(d) 2slgbtqia+",
-            ],
-            indexBonneReponse: 3,
-            corriger: "la bonne reponse etait (d) parce que c'est ca "
-        },
-        {
-            question: "C'est qui la meilleur porte logique",
-            choixDeReponse: [
-                "NAND",
-                "OR",
-                "NOR",
-                "NOT",
-            ],
-            indexBonneReponse: 0,
-            corriger: "NAND >>>>>>"
-        },
-        {
-            question: "Quelle est le complement orthogonal a l'espace des ligne?",
-            choixDeReponse: [
-                "C(A^t)",
-                "C(A)",
-                "N(A)",
-                "N(A^t)",
-            ],
-            indexBonneReponse: 2,
-            corriger: "L'espace des ligne est orthogonal au noyau."
-        },
-        {
-            question: "C'est qui le meilleur philosophe de tout les temps",
-            choixDeReponse: [
-                "Terry Davis",
-                "Platon",
-                "Aristote",
-            ],
-            indexBonneReponse: 2,
-            corriger: "Aristote ofc"
-        },
-    ]
-
-    let joueur = $state({})
-    joueur = {
-        selectedChoice: 0,
-        indexQuestion: 0,
-        nbBonneReponse: 0,
-        nbMauvaiseReponse: 0,
-        listIndexQuestionReussi: [
-
-        ],
-    }
-    
-    let corrigerState = $state(false)
-    let endState = $state(false)
-
-
-    const handleSelect = (e, i) => {
-        if (e.target.checked) {
-            joueur.selectedChoice = i;
-        } else {
-            joueur.selectedChoice = null;
-        }
-        console.log("hit")
-    }
-
-
-    const handleSendResponse = () => {
-        console.log("handleSendResponse hit")
-        if (joueur.selectedChoice == questions[joueur.indexQuestion].indexBonneReponse) {
-            meow.play()
-            joueur.nbBonneReponse++
-            joueur.listIndexQuestionReussi.push(joueur.indexQuestion)
-            corrigerState = true
-            return
-        }
-        angryMeow.play()
-        joueur.nbMauvaiseReponse++
-        corrigerState = true
-    }
-    
-    const handleOk = () => {
-        console.log("handleOk hit")
-        if (joueur.indexQuestion == (questions.length - 1)) {
-            endState = true
-            corrigerState = false
-            return
-        }
-        joueur.indexQuestion++
-        corrigerState = false
-    }
-
-    const handleRestart = () => {
-        console.log("handleRestart hit")
-        joueur = {
-            selectedChoice: 0,
-            indexQuestion: 0,
-            nbBonneReponse: 0,
-            nbMauvaiseReponse: 0,
-            listIndexQuestionReussi: [
-
-            ],
-        }
-        endState = false
-    }
-</script>
-<div class="page">
-    <div class="explication">
-        Vous êtes un chat ! Le but du jeu est d'aller informer toutes les maisons à propos des bienfaits de l'EDI. 
-        Il y aura plusieurs questions. Si vous y répondez correctement, vous aurez réussi à informer correctement la maison. 
-        Sinon, vous échouerez. Le but est de réussir à bien informer toutes les maisons !
-
-    </div>
-    <div class="qContainer">
-        <div class="question">
-            {questions[joueur.indexQuestion].question}
+<div class="book-cover">
+    <div class="content">
+        <h1 class="main-title">
+            <span class="title-line">QUI A VOLÉ</span>
+            <span class="title-line">LES PERLES ?</span>
+        </h1>
+        
+        <div class="subtitle">
+            <p class="subtitle-line">une histoire sur l'équité ,</p>
+            <p class="subtitle-line">la diversité et l'inclusion.</p>
         </div>
-
-        <div class="choixContainer">
-        {#if endState}
-            <div> Vous avez completer votre mission avec un reultat de : {joueur.nbBonneReponse}/{questions.length}</div>
-        {:else if corrigerState}
-            {#if joueur.listIndexQuestionReussi.includes(joueur.indexQuestion)}
-                <div>Bravo ! Vous avez reussi</div>
-            {:else}
-                <div>Ayayayyy. Vous avez rater.</div>
-            {/if}
-            {questions[joueur.indexQuestion].corriger}
-        {:else}
-            {#each questions[joueur.indexQuestion].choixDeReponse as choix, i}
-                <label class="choix">
-                    <input type="checkbox" checked={joueur.selectedChoice === i} onchange={(e)=>handleSelect(e, i)}/>
-                    {choix}
-                </label>
-            {/each}
-        {/if}
+        
+        <div class="decorative-flourish">
+            <svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 30 Q50 10, 80 30 T140 30 Q160 20, 180 30" 
+                    stroke="#2c3e50" 
+                    stroke-width="2" 
+                    fill="none" 
+                    stroke-linecap="round"/>
+            <circle cx="90" cy="30" r="8" stroke="#2c3e50" stroke-width="2" fill="none"/>
+            <circle cx="110" cy="30" r="6" stroke="#2c3e50" stroke-width="2" fill="none"/>
+            </svg>
         </div>
-        <div class="bonneReponse">
-            
+        
+        <div class="authors">
+            <p class="authors-line">écrit par Minh Beaulieu , Ahmed Elsamadouny, Yann Fofana,</p>
+            <p class="authors-line">Malcolm Fokou, Mohamed Reda Mifdal, Robert Nelea et Margot Tremblay</p>
         </div>
-        <div class="buttomBar">
-            <div class="stats">
-                <span>Maison reussi : {joueur.nbBonneReponse}</span>
-            </div>
-            {#if endState}
-            <button class="envoyer" onclick={handleRestart}>
-                Recommencer ?
-            </button>
-            {:else if corrigerState}
-            <button class="envoyer" onclick={handleOk}>
-                Ok !
-            </button>
-            {:else}
-            <button class="envoyer" onclick={handleSendResponse}>
-                Envoyer
-            </button>
-            {/if}
+        
+        <div class="illustrator">
+            <p>Illustré par Minh Beaulieu</p>
         </div>
+        <a href="/1" class="continuer">
+            Continuer
+        </a>
     </div>
 </div>
 
-<div class="bar">
-    {#each questions as question, i}
-         <div class="q">
-            <div class="sign">
-                <div class="textSign">
-                    {i+1}
-                </div>
-            </div>
-         </div>
-    {/each}
-    <img src="/cat3.gif" alt="" class="catGif" style="left: calc({(((joueur.indexQuestion + 1) / (questions.length) ))*100 - 1/(questions.length*2)*100}% - 2em); /* Center the cat in 1/6 of the page width */">
-</div>
+<svelte:head>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+
+    body {
+    font-family: 'Times New Roman', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #a8e6cf 0%, #dcedc1 25%, #ffd3a5 50%, #fd9853 75%, #a8e6cf 100%);
+    background-size: 400% 400%;
+    }
+    </style>
+</svelte:head>
 
 <style>
-    .page {
-        flex: 1;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        flex-direction: column;
-        background-image: url("/sky3.jpg");
-        /* background-size: cover; */
-        /* background-attachment: fixed; */
-    }
-    .explication {
-        margin-inline: 10em;
-        color: whitesmoke;
-        font-size: 1.2em;
-        background-color: rgba(0, 0, 0, 0.49);
-        padding: 1em;
-        border-radius: 0.5em;
-    }
-    .qContainer {
-        background-color: grey;
-        border-radius: 1em;
-        width: 40em;
-        height: 20em;
-        display: flex;
-        flex-direction: column;
-        padding: 1em;
-    }
-    .question {
-        background-color: rgb(196, 196, 196);
-        border-radius: 0.5em;
-        padding: 1em;
-    }
-    .choixContainer {
-        flex: 1;
-        margin-top: 1em;
-        padding: 1em;
-        background-color: rgb(196, 196, 196);
-        border-radius: 0.5em;
-        display: flex;
-        flex-direction: column;
-        gap: 1em; /* Add space between each element */
-    }
-    .buttomBar {
-        display: flex;
-        justify-content: center;
-    }
-    .envoyer {
+
+    .continuer {
         all: unset;
         cursor: pointer;
-        background-color: rgb(196, 196, 196);
-        margin-top: 1em;
         padding: 1em;
-        border-radius: 0.5em;
-        width: 10em;
-        text-align: center;
+        border-radius: 1em;
+        border: #2c3e50 solid 0.1em;
+        background-color: #cde6ff;
         transition: 0.3s;
-    }
-    .envoyer:hover {
-        background-color: rgb(235, 235, 235)
-    }
-    .envoyer:active {
-        transform: scale(0.90);
-    }
-
-    .stats {
         margin-top: 1em;
-        margin-right: 1em;
-        border-radius: 0.5em;
-        padding: 1em;
-        background-color: rgb(196, 196, 196);
-        flex: 1;
-        display: flex;
-        align-items: center;
+    }
+    .continuer:hover {
+        background-color: #dfecf8;
+    }
+    .continuer:active {
+        transform: scale(0.95);
     }
 
+    .book-cover {
+    width: 100%;
+    max-width: 768px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    }
 
+    .content {
+    text-align: center;
+    color: #2c3e50;
+    width: 100%;
+    max-width: 600px;
+    }
 
+    .main-title {
+    font-size: 3.5rem;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    margin-bottom: 2rem;
+    line-height: 1.1;
+    }
+
+    .title-line {
+    display: block;
+    }
+
+    .subtitle {
+    font-size: 1.8rem;
+    font-style: italic;
+    margin-bottom: 3rem;
+    line-height: 1.4;
+    font-weight: 300;
+    }
+
+    .subtitle-line {
+    margin-bottom: 0.5rem;
+    }
+
+    .decorative-flourish {
+    margin: 3rem 0;
+    display: flex;
+    justify-content: center;
+    }
+
+    .decorative-flourish svg {
+    width: 200px;
+    height: 60px;
+    opacity: 0.8;
+    }
+
+    .authors {
+    font-size: 1rem;
+    font-style: italic;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+    opacity: 0.9;
+    }
+
+    .authors-line {
+    margin-bottom: 0.3rem;
+    }
+
+    .illustrator {
+    font-size: 1.2rem;
+    font-style: italic;
+    font-weight: 500;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+    .book-cover {
+        padding: 20px;
+    }
     
-    .catGif {
-        position: absolute;
-        height: 6em;
-        /* left: calc(16.67% - 4em); Center the cat in 1/6 of the page width */
-        top: 50%; /* Center vertically */
-        transform: translateY(-20%); /* Adjust for the height of the cat */
-        transition: 1s;
+    .main-title {
+        font-size: 2.5rem;
     }
-    .catGif:hover {
-        left: calc(50% - 4em); /* Center the cat in 1/6 of the page width */
+    
+    .subtitle {
+        font-size: 1.4rem;
     }
-    .bar {
-        display: flex;
-        background-color: bisque;
-        position: relative;
-        justify-content: space-around;
-        align-items: center;
-        background-image: url("/grass.png");
-        height: 18em;
+    
+    .authors {
+        font-size: 0.9rem;
     }
-    .q {
-        background-image: url("/house.png");
-        background-size: 6em;
-        background-position: top right;
-        background-repeat: no-repeat;
-        height: 10em;
-        width: 11em;
-        display: flex;
-        color: black;
-        font-size: 1em;
+    
+    .illustrator {
+        font-size: 1rem;
     }
-    .sign {
-        font-size: 2em;
-        width: 2em;
-        background-image: url("/sign.png");
-        background-repeat: no-repeat;
-        background-size: 2em;
-        background-position: top;
-        display: flex;
+    
+    .decorative-flourish svg {
+        width: 150px;
+        height: 45px;
     }
-    .textSign {
-        margin-top: 0.3em;
-        margin-left: 0.9em;
-        font-size: 0.8em;
+    }
+
+    @media (max-width: 480px) {
+    .main-title {
+        font-size: 2rem;
+    }
+    
+    .subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .authors {
+        font-size: 0.8rem;
+    }
+    
+    .decorative-flourish svg {
+        width: 120px;
+        height: 36px;
+    }
+    }
+
+    /* Subtle animation for text elements */
+    .content > * {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out forwards;
+    }
+
+    .main-title {
+    animation-delay: 0.2s;
+    }
+
+    .subtitle {
+    animation-delay: 0.4s;
+    }
+
+    .decorative-flourish {
+    animation-delay: 0.6s;
+    }
+
+    .authors {
+    animation-delay: 0.8s;
+    }
+
+    .illustrator {
+    animation-delay: 1s;
+    }
+
+    @keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
     }
 </style>
